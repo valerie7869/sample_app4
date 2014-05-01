@@ -1,0 +1,116 @@
+<html> 
+<head>
+<style type="text/css">
+table.args{
+ border-collapse: collapse;
+}
+.args td {
+ border-top: 1px solid #000;
+ border-bottom: 1px solid #000;
+}
+
+table.mt
+{
+border-width: 0 0 1px 1px;
+border-spacing: 0;
+border-collapse: collapse;
+border-style: solid;
+}
+ 
+.mt td, .mt th
+{
+margin: 0;
+padding: 4px;
+border-width: 1px 1px 0 0;
+border-style: solid;
+background-color: #d3d3d3;
+}
+</style>
+<script type="text/javascript"> 
+function init() {
+document.getElementById('uriOut').innerHTML="https://olex-secure.openlogic.com/cli_scan/proj-id#/scan-uid#";
+document.getElementById('uriOut2').innerHTML="https://olex-secure.openlogic.com/cli_scan/proj-id#/scan-uid#";
+document.getElementById('txt2').innerHTML="-a ";
+document.getElementById('txt3').innerHTML="-c ";
+document.getElementById('txt5').innerHTML="-f ";
+document.getElementById('txt6').innerHTML="-e ";
+document.getElementById('txt7').innerHTML="-l ";
+document.getElementById('txt8').innerHTML="-s ";
+document.getElementById('destOut').innerHTML="/myproject/code";
+} 
+function updateTxt(field,toField){
+var field = document.getElementById(field); 
+if(toField=="uriOut")
+{ document.getElementById('uriOut2').innerHTML=field.value; }
+var toField = document.getElementById(toField);
+toField.innerHTML=field.value;
+} 
+function updateChk(cfield,tocField){ 
+var cfield = document.getElementById(cfield); 
+var tocField = document.getElementById(tocField); 
+if(cfield.checked)
+tocField.innerHTML=cfield.value;
+else
+tocField.innerHTML=" ";
+}
+</script> 
+</head>
+<body onload="init()">
+<h2>OSS Deep Discovery Command Line Scanner</h2>
+<h3>Command Line Builder Tool</h3>
+
+<p>Directory pathname to scan: <br>
+	<input  id = "destIn" value = "/myproject/code" type = "text" size = "100" onkeyup="updateTxt('destIn','destOut');"/><p>
+	
+<p>The OLEX project identifying URI: <br>
+	<input  id = "uriIn" value = "https://olex-secure.openlogic.com/cli_scan/proj-id#/scan-uid#"  
+type = "text" size = "100" onkeyup="updateTxt('uriIn','uriOut');"/><br>
+(Please note: you can obtain the Identifying URI from your OLEX project page by clicking on the "Command Line Scanning" link.)
+</p>
+<h3>Scan Options - check all that apply:</h3>
+<table class=args>
+	<tr><td nowrap=nowrap valign=top>-a:</td>
+	<td valign=top>	<input id="args2"  type = "checkbox" checked value = "-a " onclick="updateChk('args2','txt2');"/> </td>
+	<td valign=top>    Alway open and scan contents of archive file types (.zip, .tar, .gz, etc.) for additional open source even if the archive file match is found</td></tr>
+	<tr><td valign=top>-c:</td>
+	<td valign=top>	<input id="args3"  type = "checkbox" checked value = "-c " onclick="updateChk('args3','txt3');"/> </td>
+	<td valign=top>    Open and scan contents of java archive file types (.jar) for additional open source even if the archive file match is found</td></tr>
+	<tr><td nowrap=nowrap valign=top>-n:</td>
+	<td valign=top>	<input id="args4" type = "checkbox"  value = "-n " onclick="updateChk('args4','txt4');"/></td> 
+	<td valign=top>    Examine package/namespace statements inside source files (note: .jar files will be examined this way even if this option is off)</td></tr>
+	<tr><td valign=top>-f:</td>
+	<td valign=top>	<input id="args5"  type = "checkbox" checked value = "-f " onclick="updateChk('args5','txt5');"/> </td>
+	<td valign=top>    Match file names for common projects</td></tr>
+	<tr><td valign=top>-e:</td>
+	<td valign=top>	<input id="args6" type = "checkbox" checked value = "-e " onclick="updateChk('args6','txt6');"/> </td>
+	<td valign=top>    Checksum every file and match against known open source file checksums</td></tr>
+	<tr><td valign=top>-l:</td>
+	<td valign=top>	<input id="args7" type = "checkbox" checked value = "-l " onclick="updateChk('args7','txt7');"/> </td>
+	<td valign=top>    Match against blocks of code within each file (Large snippets - 500b)</td></tr>
+	<tr><td valign=top>-s:</td>
+	<td valign=top>	<input id="args8" type = "checkbox" checked value = "-s " onclick="updateChk('args8','txt8');"/> </td>
+	<td valign=top>	Match against lines of code within each file (Small snippets - 10 lines upto 500b)</td></tr>
+</table>
+<br> 
+<h3>Generated Scanner Command Line:</h3>
+<table class=mt>
+	<tr><td class-mt>java -Xmx1g -jar discovery-cli.jar '<span id="uriOut"></span>' 
+	<span id="txt2"></span> j
+	<span id="txt3"></span>  
+	<span id="txt4"></span> 
+	<span id="txt5"></span> 
+	<span id="txt6"></span> 
+	<span id="txt7"></span> 
+	<span id="txt8"></span> 
+	-p '<span id="destOut"></span>'</td></tr>
+	
+</table>
+<p>Please copy and paste this text in your command shell to run a scan.  
+If you have problems on Windows systems you may need to change single quotes to double quotes.</p>
+<p>For information on all the available options, run:</p>
+<table class=mt>
+	<tr><td class-mt>java -Xmx1g -jar discovery-cli.jar '<span id="uriOut2"></span>' -h</td></tr>
+	
+</table>
+
+</body></html> 
