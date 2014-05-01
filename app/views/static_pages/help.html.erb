@@ -28,8 +28,8 @@ background-color: #d3d3d3;
 </style>
 <script type="text/javascript"> 
 function init() {
-document.getElementById('uriOut').innerHTML="https://olex-secure.openlogic.com/cli_scan/proj-id#/scan-uid#";
-document.getElementById('uriOut2').innerHTML="https://olex-secure.openlogic.com/cli_scan/proj-id#/scan-uid#";
+document.getElementById('uriOut').innerHTML="https://oxologic.com/cli_scan/proj-id#/scan-uid#";
+document.getElementById('uriOut2').innerHTML="https://oxologic.com/cli_scan/proj-id#/scan-uid#";
 document.getElementById('txt2').innerHTML="-a ";
 document.getElementById('txt3').innerHTML="-c ";
 document.getElementById('txt5').innerHTML="-f ";
@@ -58,12 +58,13 @@ tocField.innerHTML=" ";
 <body onload="init()">
 <h2>OSS Deep Discovery Command Line Scanner</h2>
 <h3>Command Line Builder Tool</h3>
+<p>License : GPLv3 <br></p>
 
 <p>Directory pathname to scan: <br>
 	<input  id = "destIn" value = "/myproject/code" type = "text" size = "100" onkeyup="updateTxt('destIn','destOut');"/><p>
 	
 <p>The OLEX project identifying URI: <br>
-	<input  id = "uriIn" value = "https://olex-secure.openlogic.com/cli_scan/proj-id#/scan-uid#"  
+	<input  id = "uriIn" value = "https://oxologic.com/cli_scan/proj-id#/scan-uid#"  
 type = "text" size = "100" onkeyup="updateTxt('uriIn','uriOut');"/><br>
 (Please note: you can obtain the Identifying URI from your OLEX project page by clicking on the "Command Line Scanning" link.)
 </p>
